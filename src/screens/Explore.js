@@ -12,8 +12,10 @@ import {
 } from 'react-native';
 
 import Category from '../components/Explore/Category';
+import Home2 from '../components/Explore/Home';
+import Tag from '../components/Explore/Tag';
 
-const { height, width } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const ExploreIcon = require('../assets/search.png');
 
@@ -23,10 +25,11 @@ const Restaurant = require('../assets/restaurant.jpg');
 
 export default class Explore extends Component {
     UNSAFE_componentWillMount() {
-        this.stateHeaderHeight = 80;
+
+        this.startHeaderHeight = 80;
 
         if (Platform.OS == 'android') {
-            this.stateHeaderHeight = 100 + StatusBar.currentHeight;
+            this.startHeaderHeight = 120 + StatusBar.currentHeight;
         }
     }
 
@@ -38,7 +41,7 @@ export default class Explore extends Component {
                     <View style={{ flex: 1 }}>
                         <View
                             style={{
-                                height: this.stateHeaderHeight,
+                                height: this.startHeaderHeight,
                                 backgroundColor: 'white',
                                 borderBottomWidth: 1,
                                 borderBottomColor: "#ddd"
@@ -67,6 +70,16 @@ export default class Explore extends Component {
                                         backgroundColor: 'white'
                                     }}
                                 />
+                            </View>
+
+                            <View style={{
+                                flexDirection: 'row',
+                                marginHorizontal: 20,
+                                position: 'relative',
+                                top: 10,
+                            }}>
+                                <Tag name="Guests" />
+                                <Tag name="Dates" />
                             </View>
                         </View>
 
@@ -154,28 +167,36 @@ export default class Explore extends Component {
                                         paddingHorizontal: 20,
                                         marginTop: 20,
                                         borderWidth: 0.5,
-                                        borderColor: '#ddd'
+                                        borderColor: '#ddd',
+                                        flexDirection: 'row',
+                                        flexWrap: 'wrap',
+                                        justifyContent: 'space-between'
                                     }}
                                 >
-                                    <View style={{ width: width / 2, height: width / 2 }}>
-                                        <View style={{ flex: 1 }}>
-                                            <Image
-                                                style={{
-                                                    flex: 1,
-                                                    width: null,
-                                                    height: null,
-                                                    resizeMode: 'cover'
-                                                }}
-                                                source={Home}
-                                            />
-                                        </View>
-
-                                        <View style={{ flex: 1 }}>
-                                            <Text></Text>
-                                            <Text></Text>
-                                            <Text></Text>
-                                        </View>
-                                    </View>
+                                    <Home2
+                                        width={width}
+                                        home={Home}
+                                        name="The Cozy Place"
+                                        type="PRIVATE ROOM - 2 BEDS"
+                                        price={82}
+                                        rating={4}
+                                    />
+                                    <Home2
+                                        width={width}
+                                        home={Home}
+                                        name="The Cozy Place"
+                                        type="PRIVATE ROOM - 2 BEDS"
+                                        price={82}
+                                        rating={4}
+                                    />
+                                    <Home2
+                                        width={width}
+                                        home={Home}
+                                        name="The Cozy Place"
+                                        type="PRIVATE ROOM - 2 BEDS"
+                                        price={82}
+                                        rating={4}
+                                    />
                                 </View>
                             </View>
                         </ScrollView>
